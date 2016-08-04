@@ -4,15 +4,18 @@ class NotesController < ApplicationController
   end
 
   def new
-    # empty function - /notes/new will render new.html.erb
+    @note = Note.new
   end
 
   def create
     params = note_params
     params[:title] = parse_title(params[:text]) if params[:title].blank?
     @note = Note.new(params)
-    @note.save
-    redirect_to "/"
+    if @note.save
+      redirect_to "/"
+    else
+      render 'new'
+    end
   end
 
   def show
