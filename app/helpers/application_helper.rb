@@ -14,8 +14,8 @@ module ApplicationHelper
     }
 
     @renderer ||= Redcarpet::Render::HTML.new(options)
-    @markdown ||= Redcarpet::Markdown.new(renderer, extensions)
+    @markdown ||= Redcarpet::Markdown.new(@renderer, extensions)
 
-    @markdown.render(text)
+    @markdown.render(text).html_safe
   end
 end
