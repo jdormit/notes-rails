@@ -1,4 +1,6 @@
 class NotesController < ApplicationController
+  skip_before_action :verify_authenticity_token
+
   def index
     @notes = Note.all
   end
@@ -50,6 +52,10 @@ class NotesController < ApplicationController
     end
 
     def note_params
-      params.require(:note).permit(:title, :text)
+      if params.key?("note")
+        params.require(:note).permit(:title, :text)
+      else
+        {:title => params.require(:title), :text => params.require(:text)}
+      end
     end
 end

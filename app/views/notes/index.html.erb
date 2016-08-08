@@ -1,13 +1,1 @@
-<div>
-  <ul>
-    <% @notes.each do |note| %>
-      <li>
-        <%= link_to note.title, note %>   <%= link_to "(edit)", edit_note_path(note) %>  <%= link_to "(delete)", note_path(note), method: :delete, data: { confirm: "Are you sure?"} %>
-      </li>
-    <% end %>
-  </ul>
-</div>
-
-<br />
-
-<%= link_to "Add note", new_note_path %>
+<%= react_component 'Notes', {notes: @notes} %>

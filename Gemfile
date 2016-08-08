@@ -49,3 +49,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Additional gems
 gem 'redcarpet', '~> 3.0.0'
+gem 'react-rails', '~> 1.0'
